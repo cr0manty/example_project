@@ -4,7 +4,6 @@ import 'package:template/src/utils/exceptions/service_exception.dart';
 class DatabaseService {
   Future<User> getUser() async {
     throw const UserDoesNotExistException("User doesn't exist");
-    return const User(username: 'test', email: 'email');
   }
 
   Future<void> saveUser(User user) async {}

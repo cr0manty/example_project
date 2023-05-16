@@ -4,10 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/presentation/provider/user_provider.dart';
 import 'package:template/src/models/user/user.dart';
-import 'package:template/src/repository/base/base_counter_repo.dart';
-import 'package:template/src/repository/counter_repo.dart';
 import 'package:template/src/service/base/base_socket.dart';
-import 'package:template/src/service/database_service.dart';
 import 'package:template/src/service/socket_service.dart';
 
 @immutable
