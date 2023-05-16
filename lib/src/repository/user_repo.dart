@@ -26,15 +26,23 @@ class UserRepo implements BaseUserRepo {
 
   @override
   Future<User?> getUser() async {
+    User? remoteUser;
     try {
-      final remoteUser = await _restService.getUser();
-      final localUser = await _localGetUser();
+      remoteUser = await _restService.getUser();
+    } on SocketException {
+      return _localGetUser();
+    } on TimeoutException {
+      return _localGetUser();
+    }
 
+    try {
       if (remoteUser == null) {
         await _localLogout();
 
         return null;
       }
+
+      final localUser = await _localGetUser();
 
       if (localUser == null) {
         await _localSaveUser(remoteUser);
