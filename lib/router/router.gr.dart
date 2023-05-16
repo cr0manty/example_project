@@ -37,10 +37,11 @@ abstract class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<HomeNavigatorRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: HomeNavigator(
+        child: WrappedRoute(
+            child: HomeNavigator(
           user: args.user,
           key: args.key,
-        ),
+        )),
       );
     },
   };

@@ -7,7 +7,6 @@ import 'package:template/src/repository/base/base_counter_repo.dart';
 import 'package:template/src/repository/counter_repo.dart';
 import 'package:template/src/service/base/base_socket.dart';
 import 'package:template/src/service/database_service.dart';
-import 'package:template/src/service/socket_service.dart';
 
 @immutable
 @RoutePage()
@@ -21,17 +20,10 @@ class MyHomeScreen extends StatefulWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return MultiRepositoryProvider(
-      providers: [
-        RepositoryProvider<BaseCounterRepo>(
-          create: (context) => CounterRepo(
-            context.read<DatabaseService>(),
-          ),
-        ),
-        RepositoryProvider<BaseSocketService>(
-          create: (context) => SocketService(),
-        ),
-      ],
+    return RepositoryProvider<BaseCounterRepo>(
+      create: (context) => CounterRepo(
+        context.read<DatabaseService>(),
+      ),
       child: BlocProvider<CounterBLoC>(
         create: (context) => CounterBLoC(
           context.read<BaseCounterRepo>(),
