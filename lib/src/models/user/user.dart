@@ -12,6 +12,8 @@ class User with _$User {
   const factory User({
     required String username,
     required String email,
-    @Default(true) bool isActive,
+    required String updatedAt,
   }) = _User;
+
+  DateTime? get updateAtDate => DateTime.tryParse(updatedAt);
 }

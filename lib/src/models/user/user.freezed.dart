@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$User {
   String get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  bool get isActive => throw _privateConstructorUsedError;
+  String get updatedAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -29,7 +29,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String username, String email, bool isActive});
+  $Res call({String username, String email, String updatedAt});
 }
 
 /// @nodoc
@@ -47,7 +47,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? username = null,
     Object? email = null,
-    Object? isActive = null,
+    Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
       username: null == username
@@ -58,10 +58,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      isActive: null == isActive
-          ? _value.isActive
-          : isActive // ignore: cast_nullable_to_non_nullable
-              as bool,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -72,7 +72,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String username, String email, bool isActive});
+  $Res call({String username, String email, String updatedAt});
 }
 
 /// @nodoc
@@ -86,7 +86,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   $Res call({
     Object? username = null,
     Object? email = null,
-    Object? isActive = null,
+    Object? updatedAt = null,
   }) {
     return _then(_$_User(
       username: null == username
@@ -97,10 +97,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      isActive: null == isActive
-          ? _value.isActive
-          : isActive // ignore: cast_nullable_to_non_nullable
-              as bool,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -109,7 +109,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 
 class _$_User extends _User {
   const _$_User(
-      {required this.username, required this.email, this.isActive = true})
+      {required this.username, required this.email, required this.updatedAt})
       : super._();
 
   @override
@@ -117,12 +117,11 @@ class _$_User extends _User {
   @override
   final String email;
   @override
-  @JsonKey()
-  final bool isActive;
+  final String updatedAt;
 
   @override
   String toString() {
-    return 'User(username: $username, email: $email, isActive: $isActive)';
+    return 'User(username: $username, email: $email, updatedAt: $updatedAt)';
   }
 
   @override
@@ -133,12 +132,12 @@ class _$_User extends _User {
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.isActive, isActive) ||
-                other.isActive == isActive));
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username, email, isActive);
+  int get hashCode => Object.hash(runtimeType, username, email, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -151,7 +150,7 @@ abstract class _User extends User {
   const factory _User(
       {required final String username,
       required final String email,
-      final bool isActive}) = _$_User;
+      required final String updatedAt}) = _$_User;
   const _User._() : super._();
 
   @override
@@ -159,7 +158,7 @@ abstract class _User extends User {
   @override
   String get email;
   @override
-  bool get isActive;
+  String get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

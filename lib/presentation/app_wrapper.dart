@@ -4,6 +4,7 @@ import 'package:template/src/bloc/auth/auth.dart';
 import 'package:template/src/repository/base/base_user_repo.dart';
 import 'package:template/src/repository/user_repo.dart';
 import 'package:template/src/service/database_service.dart';
+import 'package:template/src/service/rest_api_service.dart';
 
 @immutable
 class AppWrapper extends StatefulWidget {
@@ -20,6 +21,7 @@ class AppWrapper extends StatefulWidget {
 
 class _AppWrapperState extends State<AppWrapper> {
   final _databaseService = DatabaseService();
+  final _restService = RestAPIService();
 
   @override
   void dispose() {
@@ -34,9 +36,13 @@ class _AppWrapperState extends State<AppWrapper> {
           RepositoryProvider<DatabaseService>.value(
             value: _databaseService,
           ),
+          RepositoryProvider<RestAPIService>.value(
+            value: _restService,
+          ),
           RepositoryProvider<BaseUserRepo>(
             create: (context) => UserRepo(
               context.read<DatabaseService>(),
+              context.read<RestAPIService>(),
             ),
           ),
         ],

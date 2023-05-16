@@ -5,5 +5,7 @@ abstract class BaseCounterRepo {
 
   Future<int> updateCounter(int counter);
 
+  Future<int> getCounter();
+
   Future<void> dispose();
 }
