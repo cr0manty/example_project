@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:template/presentation/provider/user_provider.dart';
 import 'package:template/src/bloc/counter/counter.dart';
 import 'package:template/src/repository/base/base_counter_repo.dart';
 import 'package:template/src/repository/counter_repo.dart';
@@ -53,8 +54,10 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
+            Text(
+              'Hello ${context.user.username}!\n'
               'You have pushed the button this many times:',
+              textAlign: TextAlign.center,
             ),
             BlocBuilder<CounterBLoC, CounterState>(
               builder: (context, state) {

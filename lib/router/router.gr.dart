@@ -34,9 +34,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     HomeNavigatorRoute.name: (routeData) {
+      final args = routeData.argsAs<HomeNavigatorRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const HomeNavigator(),
+        child: HomeNavigator(
+          user: args.user,
+          key: args.key,
+        ),
       );
     },
   };
@@ -86,14 +90,38 @@ class AuthRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [HomeNavigator]
-class HomeNavigatorRoute extends PageRouteInfo<void> {
-  const HomeNavigatorRoute({List<PageRouteInfo>? children})
-      : super(
+class HomeNavigatorRoute extends PageRouteInfo<HomeNavigatorRouteArgs> {
+  HomeNavigatorRoute({
+    required User user,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           HomeNavigatorRoute.name,
+          args: HomeNavigatorRouteArgs(
+            user: user,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'HomeNavigatorRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<HomeNavigatorRouteArgs> page =
+      PageInfo<HomeNavigatorRouteArgs>(name);
+}
+
+class HomeNavigatorRouteArgs {
+  const HomeNavigatorRouteArgs({
+    required this.user,
+    this.key,
+  });
+
+  final User user;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'HomeNavigatorRouteArgs{user: $user, key: $key}';
+  }
 }

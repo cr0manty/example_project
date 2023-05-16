@@ -5,9 +5,11 @@ import 'package:template/src/models/user/user.dart';
 @immutable
 class UserProvider extends StatefulWidget {
   final Widget child;
+  final User user;
 
   const UserProvider({
     required this.child,
+    required this.user,
     Key? key,
   }) : super(key: key);
 
@@ -31,13 +33,14 @@ class UserProvider extends StatefulWidget {
 }
 
 class _UserProviderState extends State<UserProvider> {
-  User? _user;
+  late User _user;
 
-  User? get user => _user;
+  User get user => _user;
 
   @override
   void initState() {
     super.initState();
+    _user = widget.user;
   }
 
   @override
@@ -114,5 +117,5 @@ class _UserProviderScope extends InheritedWidget {
 }
 
 extension UserProviderEX on BuildContext {
-  User? get user => UserProvider.of(this)?.user;
+  User get user => UserProvider.of(this)!.user;
 }

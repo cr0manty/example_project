@@ -35,7 +35,10 @@ class _MyAppState extends State<MyApp> {
           return [
             if (state is InitialAuthState) const SplashRoute(),
             if (state.isNotAuthorize) const AuthRoute(),
-            if (state.isAuthorize) const MyHomeRoute(),
+            if (state is AuthorizedAuthState)
+              HomeNavigatorRoute(
+                user: state.user,
+              ),
           ];
         },
       ),
